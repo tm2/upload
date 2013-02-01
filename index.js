@@ -52,6 +52,7 @@ Upload.prototype.to = function(path, fn){
   fn = fn || function(){};
   var req = this.req = new XMLHttpRequest;
   req.open('POST', path);
+  req.setRequestHeader("saveto",saveTo);
   req.onload = this.onload.bind(this);
   req.onerror = this.onerror.bind(this);
   req.upload.onprogress = this.onprogress.bind(this);
