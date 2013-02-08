@@ -46,7 +46,7 @@ Emitter(Upload.prototype);
  * @api public
  */
 
-Upload.prototype.to = function(path, fn){
+/*Upload.prototype.to = function(path, fn){
   // TODO: x-browser
   var self = this;
   fn = fn || function(){};
@@ -65,6 +65,20 @@ Upload.prototype.to = function(path, fn){
       fn(err);
     }
   };
+  var body = new FormData;
+  body.append('file', this.file);
+  req.send(body);
+};*/
+
+Upload.prototype.to = function(path, saveTo){
+  // TODO: x-browser
+  var req = this.req = new XMLHttpRequest;
+  req.open('POST', path);
+  req.setRequestHeader("saveto",saveTo);
+  //req.setRequestHeader("Content-type","multipart/form-data");
+  req.onload = this.onload.bind(this);
+  req.onerror = this.onerror.bind(this);
+  req.upload.onprogress = this.onprogress.bind(this);
   var body = new FormData;
   body.append('file', this.file);
   req.send(body);
