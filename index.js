@@ -37,7 +37,7 @@ function Upload(file) {
  * Mixin emitter.
  */
 
-inherit(Emitter, Upload);
+inherit(Upload, Emitter);
 
 /**
  * Upload to the given `path`.
