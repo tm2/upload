@@ -3,7 +3,8 @@
  * Module dependencies.
  */
 
-var Emitter = require('emitter');
+var Emitter = require('emitter')
+   , inherit = require('inherit');
 
 /**
  * Expose `Upload`.
@@ -36,7 +37,7 @@ function Upload(file) {
  * Mixin emitter.
  */
 
-Emitter(Upload.prototype);
+inherit(Emitter, Upload);
 
 /**
  * Upload to the given `path`.
